@@ -1,0 +1,46 @@
+name: base_app
+description: A new Flutter project.
+
+publish_to: 'none' 
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.7.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.0
+  equatable:
+  built_value:
+  built_collection:
+  flutter_bloc:
+  dio:
+  dio_http_cache:
+  string_validator:
+  flutter_secure_storage:
+  animate_do:
+  flutter_svg: ^0.18.0
+  font_awesome_flutter: '>= 4.7.0'
+  cached_network_image:
+  fluttertoast:
+  
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  build_runner: ^1.10.1
+  built_value_generator:
+
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/
+    - assets/svgs/
+
+        
+    
+    
+                                      
