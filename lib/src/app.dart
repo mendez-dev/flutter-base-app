@@ -1,26 +1,29 @@
 import 'package:base_app/src/blocs/preferences/preferences_bloc.dart';
 import 'package:base_app/src/helpers/const.dart';
 import 'package:base_app/src/models/theme/theme_model.dart';
-import 'package:base_app/src/presentation/pages/home_page.dart';
-import 'package:base_app/src/presentation/pages/logins/login_1_page.dart';
-import 'package:base_app/src/presentation/pages/logins_page.dart';
+import 'package:base_app/src/presentation/pages/home/home_page.dart';
 import 'package:base_app/src/repositories/network/network_repository.dart';
 import 'package:base_app/src/repositories/preferences/preferences_repository.dart';
 import 'package:base_app/src/presentation/styles/theme_data.dart';
+import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'presentation/pages/settings_page.dart';
+import 'config/routes/application.dart';
+import 'config/routes/routes.dart';
 
 class MyApp extends StatelessWidget {
   final PreferencesRepository preferencesRepository;
   final PreferencesBloc preferencesBloc;
 
-  const MyApp(
+  MyApp(
       {Key key,
       @required this.preferencesRepository,
-      @required this.preferencesBloc})
-      : super(key: key);
+      @required this.preferencesBloc}) {
+    final router = FluroRouter();
+    Routes.configureRoutes(router);
+    Application.router = router;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -41,15 +44,10 @@ class MyApp extends StatelessWidget {
           return MaterialApp(
             theme: state is PreferencesLoaded
                 ? themesData[state.theme]
-                : themesData[ThemeModel.dark],
+                : themesData[ThemeModel.light],
             title: 'Material App',
-            initialRoute: HomePage.routeName,
-            routes: {
-              HomePage.routeName: (BuildContext context) => HomePage(),
-              SettingsPage.routeName: (BuildContext context) => SettingsPage(),
-              LoginsPage.routeName: (BuildContext context) => LoginsPage(),
-              Login1Page.routeName: (BuildContext context) => Login1Page(),
-            },
+            home: HomePage(),
+            onGenerateRoute: Application.router.generator,
           );
         }),
       ),

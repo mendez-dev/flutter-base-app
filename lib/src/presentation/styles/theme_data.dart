@@ -1,4 +1,4 @@
-import 'package:base_app/src/presentation/styles/palettes.dart';
+import '../../../src/presentation/styles/palettes.dart';
 
 import '../../models/theme/theme_model.dart';
 import 'package:flutter/material.dart';
@@ -15,10 +15,13 @@ final themesData = {
 ThemeData _createTheme({PaletteColors colors, bool isDark}) {
   return ThemeData(
       brightness: isDark ? Brightness.dark : Brightness.light,
-      appBarTheme: AppBarTheme(elevation: 0),
+      appBarTheme: AppBarTheme(
+          elevation: 0, centerTitle: true, color: colors.appBarColor),
       primaryColor: colors.primaryColor,
+      primaryColorDark: colors.primaryColorDark,
       accentColor: colors.accentColor,
       toggleableActiveColor: colors.accentColor,
+      backgroundColor: colors.backgroundColor,
       // Temas para iconos
-      iconTheme: IconThemeData(color: colors.accentColor));
+      iconTheme: IconThemeData(color: colors.iconColor));
 }

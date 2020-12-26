@@ -30,7 +30,7 @@ class PreferencesBloc extends Bloc<PreferencesEvent, PreferencesState> {
   Stream<PreferencesState> _mapLoadPreferencesToState() async* {
     final theme = (await _preferencesRepository.getTheme());
     if (theme == null) {
-      add(UpdateTheme(theme: ThemeModel.dark));
+      add(UpdateTheme(theme: ThemeModel.light));
     } else {
       yield PreferencesLoaded(theme: theme);
     }

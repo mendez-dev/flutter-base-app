@@ -5,7 +5,8 @@ import 'src/app.dart';
 import 'src/repositories/preferences/preferences_repository_impl.dart';
 
 void main() async {
-  //  ? INVESTIGAR QUE HACE ESTO
+  // Se llama este metodo cuando se necesita ejecutar codigo nntes de llamar el
+  // primer widget
   WidgetsFlutterBinding.ensureInitialized();
 
   final preferencesRepository = PreferencesRepositoryImpl();

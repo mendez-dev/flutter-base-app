@@ -20,10 +20,11 @@ dependencies:
   string_validator:
   flutter_secure_storage:
   animate_do:
-  flutter_svg: ^0.18.0
-  font_awesome_flutter: '>= 4.7.0'
+  flutter_svg:
+  font_awesome_flutter:
   cached_network_image:
   fluttertoast:
+  fluro:
   
 
 dev_dependencies:
