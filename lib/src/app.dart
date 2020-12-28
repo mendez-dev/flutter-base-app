@@ -1,16 +1,19 @@
-import 'package:base_app/src/blocs/preferences/preferences_bloc.dart';
-import 'package:base_app/src/helpers/const.dart';
-import 'package:base_app/src/models/theme/theme_model.dart';
-import 'package:base_app/src/presentation/pages/home/home_page.dart';
-import 'package:base_app/src/repositories/network/network_repository.dart';
-import 'package:base_app/src/repositories/preferences/preferences_repository.dart';
-import 'package:base_app/src/presentation/styles/theme_data.dart';
+import 'blocs/auth/auth_bloc.dart';
+import 'presentation/pages/login/login_page.dart';
+import 'blocs/preferences/preferences_bloc.dart';
+import 'config/const.dart';
+import 'models/theme/theme_model.dart';
+import 'repositories/auth/auth_reporitory_impl.dart';
+import 'repositories/network/network_repository.dart';
+import 'repositories/preferences/preferences_repository.dart';
+import 'presentation/styles/theme_data.dart';
 import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'config/routes/application.dart';
 import 'config/routes/routes.dart';
+import 'repositories/auth/auth_repository.dart';
 
 class MyApp extends StatelessWidget {
   final PreferencesRepository preferencesRepository;
@@ -33,11 +36,20 @@ class MyApp extends StatelessWidget {
             value: preferencesRepository),
         RepositoryProvider<NetworkRepository>(
             create: (BuildContext context) => NetworkRepository(
-                baseUrl: BASE_URL, preferences: preferencesRepository))
+                baseUrl: BASE_URL, preferences: preferencesRepository)),
+        RepositoryProvider<AuthRepository>(
+            create: (BuildContext context) => AuthRepositoryImpl(
+                RepositoryProvider.of<NetworkRepository>(context))),
       ],
       child: MultiBlocProvider(
         providers: [
-          BlocProvider<PreferencesBloc>.value(value: preferencesBloc)
+          BlocProvider<PreferencesBloc>.value(value: preferencesBloc),
+          BlocProvider<AuthBloc>(
+            create: (BuildContext context) => AuthBloc(
+                preferencesRepository:
+                    RepositoryProvider.of<PreferencesRepository>(context),
+                authRepository: RepositoryProvider.of<AuthRepository>(context)),
+          )
         ],
         child: BlocBuilder<PreferencesBloc, PreferencesState>(
             builder: (BuildContext context, PreferencesState state) {
@@ -46,7 +58,7 @@ class MyApp extends StatelessWidget {
                 ? themesData[state.theme]
                 : themesData[ThemeModel.light],
             title: 'Material App',
-            home: HomePage(),
+            home: LoginPage(),
             onGenerateRoute: Application.router.generator,
           );
         }),

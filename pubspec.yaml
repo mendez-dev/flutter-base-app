@@ -25,6 +25,7 @@ dependencies:
   cached_network_image:
   fluttertoast:
   fluro:
+  logger:
   
 
 dev_dependencies:

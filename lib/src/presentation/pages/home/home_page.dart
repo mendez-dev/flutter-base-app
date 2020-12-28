@@ -1,5 +1,4 @@
 import 'package:base_app/src/helpers/helper.dart';
-import 'package:base_app/src/presentation/pages/settings/settings_page.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -17,8 +16,6 @@ class HomePage extends StatelessWidget {
           ],
         ),
         body: WillPopScope(
-          onWillPop: Helpers.of(context).onWillPop,
-          child: SingleChildScrollView(child: Container()),
-        ));
+            onWillPop: Helpers.of(context).onWillPop, child: Container()));
   }
 }
