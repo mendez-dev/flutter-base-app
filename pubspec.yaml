@@ -26,6 +26,8 @@ dependencies:
   fluttertoast:
   fluro:
   logger:
+  shimmer:
+  pull_to_refresh:
   
 
 dev_dependencies:

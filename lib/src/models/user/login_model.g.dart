@@ -23,7 +23,7 @@ class _$LoginModelSerializer implements StructuredSerializer<LoginModel> {
       'password',
       serializers.serialize(object.password,
           specifiedType: const FullType(String)),
-      'fcmToken',
+      'token',
       serializers.serialize(object.fcmToken,
           specifiedType: const FullType(String)),
     ];
@@ -50,7 +50,7 @@ class _$LoginModelSerializer implements StructuredSerializer<LoginModel> {
           result.password = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           break;
-        case 'fcmToken':
+        case 'token':
           result.fcmToken = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           break;

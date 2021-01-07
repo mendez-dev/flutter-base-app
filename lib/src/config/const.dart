@@ -1,1 +1,1 @@
-const BASE_URL = "http://financiera.apps-oss.com/rest_full";
+const BASE_URL = "http://uxpress.apps-oss.com/rest_full";

@@ -23,7 +23,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   void initState() {
     _authBloc = BlocProvider.of<AuthBloc>(context);
-    _authBloc.add(ClearEvent());
+    _authBloc.add(ClearAuthEvent());
 
     super.initState();
   }
@@ -107,12 +107,12 @@ class _LoginPageState extends State<LoginPage> {
                           ),
                         ),
                         onPressed: () {
-                          Navigator.pushNamedAndRemoveUntil(
-                              context, '/home', (route) => false);
-                          //  TODO: DESCOMENTAR ESTE CODIGO PARA HABILITAR EL LOGIN
-                          // if (!_formKey.currentState.validate()) return;
-                          // BlocProvider.of<AuthBloc>(context).add(LoginEvent(
-                          //     user: _user.text, password: _password.text));
+                          // * Descomentar para desactivar el login
+                          // Navigator.pushNamedAndRemoveUntil(
+                          //     context, '/home', (route) => false);
+                          if (!_formKey.currentState.validate()) return;
+                          BlocProvider.of<AuthBloc>(context).add(LoginEvent(
+                              user: _user.text, password: _password.text));
                         },
                       );
                     }))),

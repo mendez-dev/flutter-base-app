@@ -7,6 +7,7 @@ part 'login_model.g.dart';
 abstract class LoginModel implements Built<LoginModel, LoginModelBuilder> {
   String get user;
   String get password;
+  @BuiltValueField(wireName: 'token')
   String get fcmToken;
 
   LoginModel._();

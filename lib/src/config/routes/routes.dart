@@ -15,6 +15,7 @@ class Routes {
   static String login = "/login";
   static String home = "/home";
   static String settings = "/settings";
+  static String simpleRefresh = "/simplerefresh";
 
   static void configureRoutes(FluroRouter router) {
     router.notFoundHandler = Handler(
@@ -22,7 +23,9 @@ class Routes {
       print("ROUTE WAS NOT FOUND !!!");
     });
     // router.define(login, handler: loginHandler);
+    router.define(login, handler: loginHandler);
     router.define(home, handler: homeHandler);
     router.define(settings, handler: settingsHandler);
+    router.define(simpleRefresh, handler: simpleRefreshHandler);
   }
 }

@@ -6,8 +6,10 @@ part 'user_model.g.dart';
 
 abstract class UserModel implements Built<UserModel, UserModelBuilder> {
   @nullable
-  int get idUSer;
+  @BuiltValueField(wireName: 'id_user')
+  int get userId;
   String get name;
+  @BuiltValueField(wireName: 'user')
   String get userName;
   @nullable
   String get token;

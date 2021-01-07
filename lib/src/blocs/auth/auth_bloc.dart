@@ -35,13 +35,17 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       yield* _mapSingOutEventToState(event);
     } else if (event is GetUserEvent) {
       yield* _mapGetUserEventToState();
-    } else if (event is ClearEvent) {
+    } else if (event is ClearAuthEvent) {
       yield AuthState.initial();
     } else if (event is SetVerifyUserEvent) {
       yield state.copyWith(user: event.user);
     }
   }
 
+  /// Obtener la información del usuario
+  ///
+  /// Hace uso del metodo [verify] del [AuthRepository] para obtener la
+  /// información del usuario y actualizarla en [AuthBloc]
   Stream<AuthState> _mapGetUserEventToState() async* {
     yield state.copyWith(loading: true);
     try {
@@ -68,13 +72,21 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     }
   }
 
+  /// Cerrar Sesión
+  ///
+  /// Elimina de las preferencias del usuario el token de acceso
   Stream<AuthState> _mapSingOutEventToState(SingOutEvent event) async* {
     _preferencesRepository.remove("token");
     _preferencesRepository.remove("logged");
   }
 
+  /// Login
+  ///
+  /// Envia las credenciales de acceso al servidor y si son correctas retornan
+  /// la información del usuario junto a un token de acceso
   Stream<AuthState> _mapLoginEventToState(
       {String user, String password}) async* {
+    // FCM TOKEN para la implementacion de notificaciones push
     String fcmToken = "token";
 
     // Indicamos que esta cargando

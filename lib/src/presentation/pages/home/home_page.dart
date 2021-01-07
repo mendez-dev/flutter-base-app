@@ -16,6 +16,20 @@ class HomePage extends StatelessWidget {
           ],
         ),
         body: WillPopScope(
-            onWillPop: Helpers.of(context).onWillPop, child: Container()));
+            onWillPop: Helpers.of(context).onWillPop,
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  ListTile(
+                    onTap: () => Navigator.pushNamed(context, "/simplerefresh"),
+                    leading: Icon(FontAwesomeIcons.mobile),
+                    trailing: Icon(FontAwesomeIcons.chevronRight),
+                    title: Text("Simple Refresh"),
+                    subtitle: Text(
+                        "Pagina simple con pull tu refresh e infitine scroll view"),
+                  )
+                ],
+              ),
+            )));
   }
 }

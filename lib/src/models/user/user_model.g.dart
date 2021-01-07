@@ -20,14 +20,14 @@ class _$UserModelSerializer implements StructuredSerializer<UserModel> {
     final result = <Object>[
       'name',
       serializers.serialize(object.name, specifiedType: const FullType(String)),
-      'userName',
+      'user',
       serializers.serialize(object.userName,
           specifiedType: const FullType(String)),
     ];
-    if (object.idUSer != null) {
+    if (object.userId != null) {
       result
-        ..add('idUSer')
-        ..add(serializers.serialize(object.idUSer,
+        ..add('id_user')
+        ..add(serializers.serialize(object.userId,
             specifiedType: const FullType(int)));
     }
     if (object.token != null) {
@@ -50,15 +50,15 @@ class _$UserModelSerializer implements StructuredSerializer<UserModel> {
       iterator.moveNext();
       final dynamic value = iterator.current;
       switch (key) {
-        case 'idUSer':
-          result.idUSer = serializers.deserialize(value,
+        case 'id_user':
+          result.userId = serializers.deserialize(value,
               specifiedType: const FullType(int)) as int;
           break;
         case 'name':
           result.name = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           break;
-        case 'userName':
+        case 'user':
           result.userName = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           break;
@@ -75,7 +75,7 @@ class _$UserModelSerializer implements StructuredSerializer<UserModel> {
 
 class _$UserModel extends UserModel {
   @override
-  final int idUSer;
+  final int userId;
   @override
   final String name;
   @override
@@ -86,7 +86,7 @@ class _$UserModel extends UserModel {
   factory _$UserModel([void Function(UserModelBuilder) updates]) =>
       (new UserModelBuilder()..update(updates)).build();
 
-  _$UserModel._({this.idUSer, this.name, this.userName, this.token})
+  _$UserModel._({this.userId, this.name, this.userName, this.token})
       : super._() {
     if (name == null) {
       throw new BuiltValueNullFieldError('UserModel', 'name');
@@ -107,7 +107,7 @@ class _$UserModel extends UserModel {
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
     return other is UserModel &&
-        idUSer == other.idUSer &&
+        userId == other.userId &&
         name == other.name &&
         userName == other.userName &&
         token == other.token;
@@ -116,14 +116,14 @@ class _$UserModel extends UserModel {
   @override
   int get hashCode {
     return $jf($jc(
-        $jc($jc($jc(0, idUSer.hashCode), name.hashCode), userName.hashCode),
+        $jc($jc($jc(0, userId.hashCode), name.hashCode), userName.hashCode),
         token.hashCode));
   }
 
   @override
   String toString() {
     return (newBuiltValueToStringHelper('UserModel')
-          ..add('idUSer', idUSer)
+          ..add('userId', userId)
           ..add('name', name)
           ..add('userName', userName)
           ..add('token', token))
@@ -134,9 +134,9 @@ class _$UserModel extends UserModel {
 class UserModelBuilder implements Builder<UserModel, UserModelBuilder> {
   _$UserModel _$v;
 
-  int _idUSer;
-  int get idUSer => _$this._idUSer;
-  set idUSer(int idUSer) => _$this._idUSer = idUSer;
+  int _userId;
+  int get userId => _$this._userId;
+  set userId(int userId) => _$this._userId = userId;
 
   String _name;
   String get name => _$this._name;
@@ -154,7 +154,7 @@ class UserModelBuilder implements Builder<UserModel, UserModelBuilder> {
 
   UserModelBuilder get _$this {
     if (_$v != null) {
-      _idUSer = _$v.idUSer;
+      _userId = _$v.userId;
       _name = _$v.name;
       _userName = _$v.userName;
       _token = _$v.token;
@@ -180,7 +180,7 @@ class UserModelBuilder implements Builder<UserModel, UserModelBuilder> {
   _$UserModel build() {
     final _$result = _$v ??
         new _$UserModel._(
-            idUSer: idUSer, name: name, userName: userName, token: token);
+            userId: userId, name: name, userName: userName, token: token);
     replace(_$result);
     return _$result;
   }
