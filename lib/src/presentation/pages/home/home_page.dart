@@ -27,6 +27,14 @@ class HomePage extends StatelessWidget {
                     title: Text("Simple Refresh"),
                     subtitle: Text(
                         "Pagina simple con pull tu refresh e infitine scroll view"),
+                  ),
+                  Divider(),
+                  ListTile(
+                    onTap: () => Navigator.pushNamed(context, '/forms'),
+                    leading: Icon(Icons.keyboard),
+                    title: Text("Formularios"),
+                    subtitle: Text("Ejemplos de formularios y validaciones"),
+                    trailing: Icon(FontAwesomeIcons.chevronRight),
                   )
                 ],
               ),

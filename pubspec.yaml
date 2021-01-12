@@ -28,6 +28,7 @@ dependencies:
   logger:
   shimmer:
   pull_to_refresh:
+  dropdown_search:
   
 
 dev_dependencies:

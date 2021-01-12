@@ -1,3 +1,7 @@
+import 'package:base_app/src/models/address/department_model.dart';
+import 'package:base_app/src/models/address/department_response.dart';
+import 'package:base_app/src/models/address/municipality_model.dart';
+import 'package:base_app/src/models/address/municipality_response.dart';
 import 'package:base_app/src/models/theme/theme_model.dart';
 import 'package:base_app/src/models/user/login_model.dart';
 import 'package:base_app/src/models/user/user_model.dart';
@@ -18,7 +22,11 @@ part 'serializers.g.dart';
   LoginModel,
   UserExampleModel,
   UserPaging,
-  UserExampleResponse
+  UserExampleResponse,
+  DepartmentResponse,
+  DepartmentModel,
+  MunicipalityResponse,
+  MunicipalityModel
 ])
 final Serializers serializers =
     (_$serializers.toBuilder()..addPlugin(StandardJsonPlugin())).build();

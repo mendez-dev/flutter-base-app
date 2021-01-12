@@ -7,13 +7,23 @@ part of 'serializers.dart';
 // **************************************************************************
 
 Serializers _$serializers = (new Serializers().toBuilder()
+      ..add(DepartmentModel.serializer)
+      ..add(DepartmentResponse.serializer)
       ..add(LoginModel.serializer)
+      ..add(MunicipalityModel.serializer)
+      ..add(MunicipalityResponse.serializer)
       ..add(ThemeModel.serializer)
       ..add(UserExampleModel.serializer)
       ..add(UserExampleResponse.serializer)
       ..add(UserModel.serializer)
       ..add(UserPaging.serializer)
       ..add(UserResponse.serializer)
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(DepartmentModel)]),
+          () => new ListBuilder<DepartmentModel>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(MunicipalityModel)]),
+          () => new ListBuilder<MunicipalityModel>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(UserExampleModel)]),
           () => new ListBuilder<UserExampleModel>()))
